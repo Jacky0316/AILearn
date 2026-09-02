@@ -1,0 +1,23 @@
+# 依赖与构建产物
+node_modules/
+dist/
+
+# 环境与密钥
+.env
+.env.*
+!.env.example
+
+# 日志与系统文件
+*.log
+.DS_Store
+Thumbs.db
+
+# ZCode 内部文件
+.zcode/
+
+# 第三方 UI 参考截图（aipath 无 LICENSE，不入库，仅本地留存）
+网站参考界面.png
+网站学习参考项目.png
+
+# 截图产物（保留 .shots/capture.py 脚本）
+.shots/*.png

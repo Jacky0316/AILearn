@@ -1,0 +1,157 @@
+/* AILearn 设计系统 —— 暖纸质感 · 墨色单色品牌 · 红陶语义强调（token 参考 buynao/aipath 设计语言） */
+
+:root {
+  /* 表面 */
+  --bg-0: #F4EFE2;
+  --bg-card: rgba(250, 246, 238, 0.96);
+  --bg-lift: #FDFBF6;
+  --bg-inset: #F1EBDC;
+  /* 文字 */
+  --fg-0: #1A1410;
+  --fg-1: #4A4238;
+  --fg-2: #8B8275;
+  --on-accent: #FAF6EC;
+  /* 品牌强调：红陶（参考图按钮 / 选中态） */
+  --accent: #B84F48;
+  --accent-strong: #A03F39;
+  --accent-soft: rgba(184, 79, 72, 0.08);
+  --accent-soft-2: rgba(184, 79, 72, 0.14);
+  /* 语义色（只用于标签，不做品牌） */
+  --sage: #7FA378;
+  --sage-soft: rgba(127, 163, 120, 0.14);
+  --terracotta: #B84F48;
+  --terracotta-soft: rgba(184, 79, 72, 0.1);
+  --amber: #BA8651;
+  --amber-soft: rgba(186, 134, 81, 0.14);
+  --sky: #5C88B0;
+  --sky-soft: rgba(92, 136, 176, 0.12);
+  /* 发丝线与玻璃 */
+  --hair-1: rgba(26, 20, 16, 0.08);
+  --hair-2: rgba(26, 20, 16, 0.14);
+  --glass: rgba(244, 239, 226, 0.86);
+  /* 形状 */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 20px;
+  --shadow-card: 0 1px 2px rgba(26, 20, 16, 0.04), 0 8px 28px rgba(26, 20, 16, 0.06);
+  --shadow-pop: 0 2px 6px rgba(26, 20, 16, 0.06), 0 16px 48px rgba(26, 20, 16, 0.14);
+  --sidebar-w: 284px;
+  --topbar-h: 60px;
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Noto Sans SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+  --mono: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+}
+
+[data-theme="dark"] {
+  --bg-0: #141414;
+  --bg-card: #1F1F1D;
+  --bg-lift: #262623;
+  --bg-inset: #1A1A18;
+  --fg-0: #FAF6EC;
+  --fg-1: #C9C2B4;
+  --fg-2: #8B8478;
+  --on-accent: #141414;
+  --accent: #E0625A;
+  --accent-strong: #EC7A72;
+  --accent-soft: rgba(224, 98, 90, 0.12);
+  --accent-soft-2: rgba(224, 98, 90, 0.2);
+  --sage: #94B98C;
+  --sage-soft: rgba(148, 185, 140, 0.16);
+  --terracotta: #E0625A;
+  --terracotta-soft: rgba(224, 98, 90, 0.14);
+  --amber: #D2A075;
+  --amber-soft: rgba(210, 160, 117, 0.16);
+  --sky: #7FA8CE;
+  --sky-soft: rgba(127, 168, 206, 0.14);
+  --hair-1: rgba(250, 246, 236, 0.08);
+  --hair-2: rgba(250, 246, 236, 0.16);
+  --glass: rgba(20, 20, 20, 0.82);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.2), 0 8px 28px rgba(0, 0, 0, 0.25);
+  --shadow-pop: 0 2px 6px rgba(0, 0, 0, 0.3), 0 16px 48px rgba(0, 0, 0, 0.5);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg-0);
+  color: var(--fg-0);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+::selection { background: var(--accent); color: var(--on-accent); }
+
+a { color: inherit; text-decoration: none; }
+
+button {
+  font-family: var(--font);
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+h1, h2, h3, h4, p { margin: 0; }
+
+/* 细滚动条 */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: var(--hair-2); border-radius: 99px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+/* 通用按钮 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 46px;
+  padding: 0 26px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+.btn:active { transform: scale(0.97); }
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 1px 2px rgba(26, 20, 16, 0.12), 0 6px 20px rgba(184, 79, 72, 0.28);
+}
+[data-theme="dark"] .btn-primary { color: #1A1410; }
+.btn-primary:hover { background: var(--accent-strong); }
+.btn-ghost {
+  background: var(--bg-lift);
+  color: var(--fg-0);
+  border: 1px solid var(--hair-2);
+}
+.btn-ghost:hover { border-color: var(--fg-2); }
+
+/* 药丸标签 */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.7;
+  white-space: nowrap;
+}
+.pill-sky { background: var(--sky-soft); color: var(--sky); }
+.pill-terracotta { background: var(--terracotta-soft); color: var(--terracotta); }
+.pill-amber { background: var(--amber-soft); color: var(--amber); }
+.pill-sage { background: var(--sage-soft); color: var(--sage); }
+
+/* 进度圈（SVG） */
+.ring circle { transition: stroke-dashoffset 0.4s ease; }
